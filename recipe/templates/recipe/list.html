@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Session & Cookie</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style type="text/css">
+        .row{
+            margin:0px auto
+        }
+    </style>
+</head>
+<!-- python manage.py runserver -->
+<body>
+     <div style="height:50px"></div>
+     <div class="container">
+         {% include 'recipe/header.html' %}
+         <hr>
+         <div class="row">
+             {% for recipe in rd %}
+             <div class="col-md-3">
+                    <div class="thumbnail">
+                      <a href="/recipe/before/?no={{recipe.no}}">
+                        <img src="{{recipe.poster}}" alt="Lights" style="width:100%">
+                        <div class="caption">
+                          <p>{{recipe.title|slice:"15"}}</p>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+             {% endfor %}
+         </div>
+         <hr>
+         <div class="row">
+             <div class="text-center">
+                <ul class="pagination">
+                     {% if startPage > 1 %}
+                       <li><a href="/recipe/?page={{startPage|add:'-1'}}">&lt;</a></li>
+                     {% endif %}
+                     {% for i in range %}
+                       {% if curpage == i %}
+                        <li class="active"><a href="/recipe/?page={{i}}">{{i}}</a></li>
+                       {% else %}
+                        <li><a href="/recipe/?page={{i}}">{{i}}</a></li>
+                       {% endif %}
+                      {% endfor %}
+                     {% if endPage < totalpage %}
+                       <li><a href="/recipe/?page={{endPage|add:'1'}}">&gt;</a></li>
+                     {% endif %}
+                    </ul>
+             </div>
+         </div>
+         <hr>
+         <div class="row">
+            최신 방문한 레시피<br>
+            {% for recipe in cd %}
+             <div class="col-md-2">
+                    <div class="thumbnail">
+                      <a href="/recipe/detail/?no={{recipe.no}}">
+                        <img src="{{recipe.poster}}" alt="Lights" style="width:100%">
+                      </a>
+                    </div>
+                  </div>
+             {% endfor %}
+         </div>
+     </div>
+</body>
+</html>

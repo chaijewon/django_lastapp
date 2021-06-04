@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style type="text/css">
+        .row{
+            margin:0px auto;
+            width:800px;
+        }
+    </style>
+</head>
+<!-- python manage.py runserver -->
+<body>
+     <div style="height:50px"></div>
+     <div class="container">
+         {% include 'recipe/header.html' %}
+         <hr>
+         <div class="row">
+           <table class="table">
+               <tr>
+                   <td colspan="3" class="text-center">
+                       <img src="{{rd.poster}}" width="800" height="200">
+                   </td>
+               </tr>
+               <tr>
+                   <td colspan="3" class="text-center">
+                       {{rd.title}}
+                   </td>
+               </tr>
+               <tr>
+                   <td colspan="3" class="text-center">
+                       {{rd.content}}
+                   </td>
+               </tr>
+               <tr>
+                   <td class="text-center">
+                       <img src="/static/images/info1.png">
+                   </td>
+                   <td class="text-center">
+                       <img src="/static/images/info2.png">
+                   </td>
+                   <td class="text-center">
+                       <img src="/static/images/info3.png">
+                   </td>
+               </tr>
+               <tr>
+                   <td class="text-center">
+                       {{rd.info1}}
+                   </td>
+                   <td class="text-center">
+                       {{rd.info2}}
+                   </td>
+                   <td class="text-center">
+                       {{rd.info3}}
+                   </td>
+               </tr>
+               <tr>
+                   <td colspan="3">조립법</td>
+               </tr>
+               <tr>
+                   <td colspan="3">
+                       <ul style="list-style:none">
+                           {% for i in fm %}
+                            <li>{{i}}</li>
+                           {% endfor %}
+                       </ul>
+                   </td>
+               </tr>
+               <tr>
+                   <td colspan="3">
+                       <img src="{{chef_poster}}" width="30" height="30">
+                       {{rd.chef}}
+                       <br>
+                       {{rd.chef_info}}
+                   </td>
+               </tr>
+               <tr>
+                   <td colspan="3" class="text-right">
+                       <a href="/recipe/" class="btn btn-sm btn-dnager">목록</a>
+                   </td>
+               </tr>
+           </table>
+         </div>
+     </div>
+</body>
+</html>

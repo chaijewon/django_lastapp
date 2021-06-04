@@ -1,0 +1,18 @@
+    <div class="row">
+             <div class="text-right">
+                 {% if not request.session.id %}
+                 <form method="post" action="/recipe/login/">
+                     {% csrf_token %}
+                     ID:<input type="text" size="15" name="id" class="input-sm" required>&nbsp;
+                     Password:<input type="password" size="15" name="pwd" class="input-sm" required>&nbsp;
+                     <input type="submit" value="로그인" class="btn btn-sm btn=primary">
+                 </form>
+                 {% else %}
+                 <form method="post" action="/recipe/logout/">
+                     {% csrf_token %}
+                     {{request.session.name}}님 로그인중입니다&nbsp;
+                     <input type="submit" value="로그아웃" class="btn btn-sm btn=primary">
+                 </form>
+                 {% endif %}
+             </div>
+         </div>
